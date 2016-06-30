@@ -4,7 +4,7 @@
   "description": "Display daily weather outside and inside room. And make projections.",
   "main": "server.js",
   "scripts": {
-    "jshint": "./node_modules/.bin/jshint --config .jshintrc --exclude=node_modules,test . || exit 0"
+    "jshint": "./node_modules/.bin/jshint --config .jshintrc --exclude=node_modules,app/bower_components,test . || exit 0"
   },
   "author": "Clint Pitzak",
   "license": "MIT",
