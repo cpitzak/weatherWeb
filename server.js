@@ -66,7 +66,7 @@ app.get('/weather/hourly', function(request, response) {
         day = date.getDate(),
         month = months[date.getMonth()],
         year = date.getFullYear();
-    WeatherObject.find({"day": 1, "month": month, "year": year}, function (err, weatherList) {
+    WeatherObject.find({"day": day, "month": month, "year": year}, function (err, weatherList) {
         var resultList;
         if (err) {
             console.error('Doing /weather/hourly error:', err);
