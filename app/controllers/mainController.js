@@ -17,11 +17,13 @@ weatherWebApp.controller('MainController', ['$scope', '$resource',
             var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
             return hour12 + ":00 " + amPm;
         }
+        $scope.currentRoomWeather = {};
+        $resource('/weather', {}, {query: {method: 'get', isArray: true}}).query(function(obj) {
+            $scope.currentRoomWeather = obj[0];
+        });
         $resource('/weather/hourly', {}, {query: {method: 'get', isArray: true}}).query(function(obj) {
 
             $resource('/roomWeather/hourly', {}, {query: {method: 'get', isArray: true}}).query(function(obj2) {
-                console.log("result: " + JSON.stringify(obj2));
-
                 var i, hourlyData = obj,
                     roomHourlyData = obj2,
                     roomDataPoints = [],

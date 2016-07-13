@@ -8,6 +8,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var WeatherObject = require('./schema/weatherObject.js');
 var RoomWeatherObject = require('./schema/roomWeatherObject.js');
+var CurrentRoomWeatherObject = require('./schema/currentRoomWeatherObject.js');
 
 var express = require('express');
 var app = express();
@@ -106,6 +107,29 @@ app.get('/roomWeather/hourly', function(request, response) {
             resultList = weatherList;
         }
         response.status(200).end(JSON.stringify(resultList));
+    });
+});
+
+app.get('/roomWeather', function(request, response) {
+    var date = new Date(),
+        day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear();
+    CurrentRoomWeatherObject.findOne({}, function (err, weather) {
+        var weatherObject = {};
+        if (err) {
+            console.error('Doing /roomWeather error:', err);
+            response.status(500).send('Doing /roomWeather error:');
+            return;
+        }
+        if (weather === null) {
+            console.error("No weather data for current room weather");
+            response.status(400).send(JSON.stringify(weatherObject));
+            return;
+        }
+        weatherObject.temp = weather.temp;
+        weatherObject.humidity = weather.humidity;
+        response.status(200).end(JSON.stringify(weatherObject));
     });
 });
 
