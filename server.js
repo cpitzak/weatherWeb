@@ -7,9 +7,24 @@ var path = require('path');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var WeatherObject = require('./schema/weatherObject.js');
+var RoomWeatherObject = require('./schema/roomWeatherObject.js');
 
 var express = require('express');
 var app = express();
+
+var months = [];
+months[0] = "January";
+months[1] = "February";
+months[2] = "March";
+months[3] = "April";
+months[4] = "May";
+months[5] = "June";
+months[6] = "July";
+months[7] = "August";
+months[8] = "September";
+months[9] = "October";
+months[10] = "November";
+months[11] = "December";
 
 var staticFiles = path.join(__dirname, "app");
 mongoose.connect('mongodb://localhost/weatherdb');
@@ -49,12 +64,37 @@ app.get('/weather', function (request, response) {
 app.get('/weather/hourly', function(request, response) {
     var date = new Date(),
         day = date.getDate(),
+        month = months[date.getMonth()],
         year = date.getFullYear();
-    WeatherObject.find({"day": day, "year": year}, function (err, weatherList) {
+    WeatherObject.find({"day": 1, "month": month, "year": year}, function (err, weatherList) {
         var resultList;
         if (err) {
             console.error('Doing /weather/hourly error:', err);
             response.status(500).send('Doing /weather/hourly error:');
+            return;
+        }
+        if (weatherList.length !== 0) {
+            resultList = JSON.parse(JSON.stringify(weatherList));
+            for(var i = 0; i < resultList.length; i++) {
+                delete resultList[i].date;
+            }
+        } else {
+            resultList = weatherList;
+        }
+        response.status(200).end(JSON.stringify(resultList));
+    });
+});
+
+app.get('/roomWeather/hourly', function(request, response) {
+    var date = new Date(),
+        day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear();
+    RoomWeatherObject.find({"day": day, "month": month, "year": year}, function (err, weatherList) {
+        var resultList;
+        if (err) {
+            console.error('Doing /roomWeather/hourly error:', err);
+            response.status(500).send('Doing /roomWeather/hourly error:');
             return;
         }
         if (weatherList.length !== 0) {
