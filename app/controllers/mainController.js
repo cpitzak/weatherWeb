@@ -18,8 +18,8 @@ weatherWebApp.controller('MainController', ['$scope', '$resource',
             return hour12 + ":00 " + amPm;
         }
         $scope.currentRoomWeather = {};
-        $resource('/weather', {}, {query: {method: 'get', isArray: true}}).query(function(obj) {
-            $scope.currentRoomWeather = obj[0];
+        $resource('/roomWeather').get({}, function(obj) {
+            $scope.currentRoomWeather = obj;
         });
         $resource('/weather/hourly', {}, {query: {method: 'get', isArray: true}}).query(function(obj) {
 
