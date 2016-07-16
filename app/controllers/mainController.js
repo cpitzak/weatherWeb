@@ -10,19 +10,23 @@ weatherWebApp.config(['$routeProvider',
             });
     }]);
 
-weatherWebApp.controller('MainController', ['$scope', '$resource',
-    function ($scope, $resource) {
+weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
+    function ($scope, $resource, $interval) {
+        var roomWeatherFunc;
         function convert24to12Hour(hour24) {
             var hour12 = ((hour24 + 11) % 12) + 1;
             var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
             return hour12 + ":00 " + amPm;
         }
         $scope.currentRoomWeather = {};
-        $resource('/roomWeather').get({}, function(obj) {
-            $scope.currentRoomWeather = obj;
-        });
+        roomWeatherFunc = function() {
+            $resource('/roomWeather').get({}, function(obj) {
+                $scope.currentRoomWeather = obj;
+            });
+        };
+        roomWeatherFunc(); // on first load
+        $interval(roomWeatherFunc, 5000); // update room weather readings every 5 seconds
         $resource('/weather/hourly', {}, {query: {method: 'get', isArray: true}}).query(function(obj) {
-
             $resource('/roomWeather/hourly', {}, {query: {method: 'get', isArray: true}}).query(function(obj2) {
                 var i, hourlyData = obj,
                     roomHourlyData = obj2,
@@ -70,8 +74,6 @@ weatherWebApp.controller('MainController', ['$scope', '$resource',
               };
 
             });
-
-            
         });
 
     }]);
