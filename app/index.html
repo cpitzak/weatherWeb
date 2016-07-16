@@ -34,6 +34,35 @@
                 Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>Humidity: {{ currentRoomWeather.humidity }}%<br/>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table table-responsive table-condensed table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Hour</th>
+                            <th>{{ location }} Temperature</th>
+                            <th>Room Temperature</th>
+                            <th>{{ location }} Humidity</th>
+                            <th>Humidity Humidity</th>
+                        </tr>
+                        <tr ng-repeat="tableRow in tableData">
+                            <td>{{ tableRow[0] }}</td>
+                            <td>{{ tableRow[1] }}&deg;F</td>
+                            <td>
+                                <span ng-if="tableRow[2]">{{ tableRow[2] }}&deg;F</span>
+                                <span ng-if="tableRow[2] === null">N/A</span>
+                            </td>
+                            <td>{{ tableRow[3] }}%</td>
+                            <td>
+                                <span ng-if="tableRow[4]">{{ tableRow[4] }}%</span>
+                                <span ng-if="tableRow[4] === null">N/A</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
 
         <!-- dependencies -->
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>

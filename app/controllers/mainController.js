@@ -18,6 +18,7 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
             var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
             return hour12 + ":00 " + amPm;
         }
+        $scope.location = 'Palo Alto';
         $scope.currentRoomWeather = {};
         roomWeatherFunc = function() {
             $resource('/roomWeather').get({}, function(obj) {
@@ -63,7 +64,7 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
                 $scope.data.push(roomTempDataPoints);
                 $scope.humidityChartData.push(outsideHumidityPoints);
                 $scope.humidityChartData.push(roomHumidityDataPoints);
-                $scope.series = ['Palo Alto', 'Room'];
+                $scope.series = [$scope.location, 'Room'];
                 $scope.onClick = function (points, evt) {
                     console.log(points, evt);
                 };
@@ -83,7 +84,11 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
                   ]
                 }
               };
-
+              $scope.tableData = [];
+              for (i = $scope.labels.length - 1; i >= 0; i--) {
+                $scope.tableData.push([$scope.labels[i], $scope.data[0][i], $scope.data[1][i],
+                    $scope.humidityChartData[0][i], $scope.humidityChartData[1][i]]);
+              }
             });
         });
 
