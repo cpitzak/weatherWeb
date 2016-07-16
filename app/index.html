@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-5">
               <div class="panel panel-default">
-                <div class="panel-heading">Weather Chart</div>
+                <div class="panel-heading">Temperature</div>
                 <div class="panel-body">
                   <canvas id="line" class="chart chart-line" chart-data="data"
                     chart-labels="labels" chart-series="series" chart-options="options"
@@ -18,8 +18,21 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-7">Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>Humidity: {{ currentRoomWeather.humidity }}%</div>
-           <!-- <div class="col-md-5 text-left">Humidity: {{ currentRoomWeather.humidity }}%</div> -->
+            <div class="col-md-5">
+              <div class="panel panel-default">
+                <div class="panel-heading">Humidity</div>
+                <div class="panel-body">
+                  <canvas id="line" class="chart chart-line" chart-data="humidityChartData"
+                    chart-labels="labels" chart-series="series" chart-options="options"
+                    chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+                <h4>Room</h4>
+                Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>Humidity: {{ currentRoomWeather.humidity }}%<br/>
+            </div>
         </div>
 
         <!-- dependencies -->
@@ -28,7 +41,7 @@
         <script src="/bower_components/angular/angular.min.js" type="text/javascript" ></script>
         <script src="/bower_components/angular-resource/angular-resource.min.js" type="text/javascript" ></script>
         <script src="/bower_components/angular-route/angular-route.min.js"></script>
-        <script src="/bower_components/Chart.js/Chart.js"></script>
+        <script src="/bower_components/Chart.js/dist/Chart.min.js"></script>
         <script src="/bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
 
         <!-- controllers -->
