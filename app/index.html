@@ -34,7 +34,7 @@
                 Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>Humidity: {{ currentRoomWeather.humidity }}%<br/>
                 <h4>{{ location }}</h4>
                 Temperature: {{ currentOutsideWeather.temp }}&deg;F<br/>Humidity: {{ currentOutsideWeather.humidity }}%<br/>
-                <img src="{{ currentOutsideWeather.condition_icon_url }}"/>
+                <img ng-src="{{ currentOutsideWeather.condition_icon_url }}"/>
             </div>
         </div>
         <div class="row">
