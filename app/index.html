@@ -31,9 +31,12 @@
             </div>
             <div class="col-md-2">
                 <h4>Room</h4>
-                Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>Humidity: {{ currentRoomWeather.humidity }}%<br/>
+                Temperature: {{ currentRoomWeather.temp }}&deg;F<br/>
+                Humidity: {{ currentRoomWeather.humidity }}%<br/>
                 <h4>{{ location }}</h4>
-                Temperature: {{ currentOutsideWeather.temp }}&deg;F<br/>Humidity: {{ currentOutsideWeather.humidity }}%<br/>
+                Temperature: {{ currentOutsideWeather.temp }}&deg;F<br/>
+                Feels Like: {{ currentOutsideWeather.temp_feel }}&deg;F<br/>
+                Humidity: {{ currentOutsideWeather.humidity }}%<br/>
                 <img ng-src="{{ currentOutsideWeather.condition_icon_url }}"/>
             </div>
         </div>
