@@ -14,7 +14,10 @@ var weatherObjectSchema = new mongoose.Schema({
     day: Number,
     year: Number,
     temp: Number,
-    humidity: Number
+    temp_feel: Number,
+    humidity: Number,
+    condition: String,
+    condition_icon_url: String
 }, {
     collection: 'weather_channel'
 });

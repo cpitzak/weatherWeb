@@ -27,6 +27,12 @@ months[9] = "October";
 months[10] = "November";
 months[11] = "December";
 
+function convert24to12Hour(hour24) {
+    var hour12 = ((hour24 + 11) % 12) + 1;
+    var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
+    return hour12 + ":00 " + amPm;
+}
+
 var staticFiles = path.join(__dirname, "app");
 mongoose.connect('mongodb://localhost/weatherdb');
 
@@ -42,22 +48,27 @@ app.get('/', function (request, response) {
 });
 
 app.get('/weather', function (request, response) {
-    WeatherObject.find({}, function (err, weatherList) {
-        var resultList;
+    var date = new Date(),
+        day = date.getDate(),
+        month = months[date.getMonth()],
+        year = date.getFullYear(),
+        time = convert24to12Hour(date.getHours());
+    WeatherObject.findOne({"day": day, "month": month, "year": year, "time": time}, function (err, weather) {
+        var result;
         if (err) {
             console.error('Doing /weather error:', err);
             response.status(500).send('Doing /weather error:');
             return;
         }
-        if (weatherList.length !== 0) {
-            resultList = JSON.parse(JSON.stringify(weatherList));
-            for(var i = 0; i < resultList.length; i++) {
-                delete resultList[i].date;
-            }
-        } else {
-            resultList = weatherList;
+        if (weather === null) {
+            console.error("No weather data for current weather");
+            response.status(400).send(JSON.stringify(weatherObject));
+            return;
         }
-        response.status(200).end(JSON.stringify(resultList));
+        result = JSON.parse(JSON.stringify(weather));
+        delete result.date;
+        delete result._id;
+        response.status(200).end(JSON.stringify(result));
     });
 });
 
