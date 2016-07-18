@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var WeatherObject = require('./schema/weatherObject.js');
 var RoomWeatherObject = require('./schema/roomWeatherObject.js');
 var CurrentRoomWeatherObject = require('./schema/currentRoomWeatherObject.js');
+var MetaDataObject = require('./schema/metaDataObject.js');
 
 var express = require('express');
 var app = express();
@@ -47,6 +48,24 @@ app.get('/', function (request, response) {
     response.send('Simple web server of files from ' + staticFiles);
 });
 
+app.get('/location', function (request, response) {
+    MetaDataObject.find({}, function (err, metaDataObject) {
+        var metaData;
+        if (err) {
+            console.error('Doing /location error:', err);
+            response.status(500).send('Doing /location error:');
+            return;
+        }
+        if (metaDataObject === null || metaDataObject.length === 0) {
+            console.error("No location meta data");
+            response.status(400).send(JSON.stringify(metaDataObject));
+            return;
+        }
+        metaData = JSON.parse(JSON.stringify(metaDataObject[0]));
+        response.status(200).end(JSON.stringify(metaData.location));
+    });
+});
+
 app.get('/weather', function (request, response) {
     var date = new Date(),
         day = date.getDate(),
@@ -62,7 +81,7 @@ app.get('/weather', function (request, response) {
         }
         if (weather === null) {
             console.error("No weather data for current weather");
-            response.status(400).send(JSON.stringify(weatherObject));
+            response.status(400).send(JSON.stringify(weather));
             return;
         }
         result = JSON.parse(JSON.stringify(weather));
