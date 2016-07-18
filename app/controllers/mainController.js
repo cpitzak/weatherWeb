@@ -107,9 +107,6 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
         // update current weather display every 5 seconds
         $interval(roomWeatherFunc, 5000);
         $interval(outsideWeatherFunc, 5000);
-        // update outside weather data every 7 minutes.
-        // we update our db from weather underground every 15 mins on the backend. This amount because of API call limits.
-        // when loading this page if you come in at 1/2 through the intervals 15 min / 2 = 7.5 mins then 7.5 mins is the shortest
-        // time till the next update.
-        $interval(updateCharts, 7*60*1000);
+        // update charts every minute
+        $interval(updateCharts, 60*1000);
     }]);
