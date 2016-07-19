@@ -11,6 +11,7 @@ You need to have the following installed:
 - [dht22Service](https://github.com/cpitzak/dht22Service)
 - [weatherService](https://github.com/cpitzak/weatherService)
 - [node.js](https://nodejs.org/en/)
+- [bower](https://bower.io/)
 
 
 ## Install
