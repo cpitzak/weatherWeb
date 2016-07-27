@@ -6,8 +6,12 @@ I have this website start when my raspberry pi is loaded. My raspberry pi is alw
 
 This website is to be used with my other two projects [dht22Service](https://github.com/cpitzak/dht22Service) and [weatherService](https://github.com/cpitzak/weatherService).
 
-Live Demo: [https://weather-clintpitzak.rhcloud.com](https://weather-clintpitzak.rhcloud.com)
-This is the real-time weather of my room. No need to refresh the webpage, it updates automatically.
+## Demo
+
+This is a live demo of the weather of my room. Page updates without needing to refresh.
+
+[https://weather-clintpitzak.rhcloud.com](https://weather-clintpitzak.rhcloud.com)
+
 
 ## Purpose
 
