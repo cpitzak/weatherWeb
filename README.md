@@ -35,6 +35,7 @@ You need to have the following installed:
 
 Note: make sure mongdb is running whenever using this service
 
+Update the config file in config/ if needed
 
 ```
 $ sudo mkdir /apps
