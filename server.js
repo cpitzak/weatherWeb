@@ -10,6 +10,7 @@ var WeatherObject = require('./schema/weatherObject.js');
 var RoomWeatherObject = require('./schema/roomWeatherObject.js');
 var CurrentRoomWeatherObject = require('./schema/currentRoomWeatherObject.js');
 var MetaDataObject = require('./schema/metaDataObject.js');
+var config = require('config');
 
 var express = require('express');
 var app = express();
@@ -28,6 +29,9 @@ months[9] = "October";
 months[10] = "November";
 months[11] = "December";
 
+// set time zone so that when visiting the webpage from different locations it matches the time zone of the raspberry pi
+process.env['TZ'] = config.timeZone;
+
 function convert24to12Hour(hour24) {
     var hour12 = ((hour24 + 11) % 12) + 1;
     var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
@@ -35,12 +39,9 @@ function convert24to12Hour(hour24) {
 }
 
 var staticFiles = path.join(__dirname, "app");
-mongoose.connect('mongodb://localhost/weatherdb');
+mongoose.connect(config.mongoUrl);
 
-// We have the express static module (http://expressjs.com/en/starter/static-files.html) do all
-// the work for us.
 app.use(express.static(staticFiles));
-
 app.use(session({secret: 'secretKey', resave: false, saveUninitialized: false}));
 app.use(bodyParser.json());
 

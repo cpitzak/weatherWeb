@@ -1,0 +1,4 @@
+{
+  "timeZone": "America/Los_Angeles",
+  "mongoUrl": "mongodb://localhost/weatherdb"
+}
