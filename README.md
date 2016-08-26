@@ -48,6 +48,7 @@ $ sudo chmod 755 /etc/init.d/weatherWeb
 $ sudo update-rc.d weatherWeb defaults
 $ sudo update-rc.d weatherWeb enable
 $ sudo systemctl daemon-reload
+$ npm install -g grunt-cli
 $ npm install
 $ bower install
 $ grunt build
