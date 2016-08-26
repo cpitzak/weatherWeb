@@ -18,6 +18,7 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
             var amPm = hour24 > 11 && hour24 !== 24 ? 'PM' : 'AM';
             return hour12 + ":00 " + amPm;
         }
+        $scope.loaded = false;
         $scope.location = {};
         $scope.currentRoomWeather = {};
         $scope.currentOutsideWeather = {};
@@ -96,6 +97,7 @@ weatherWebApp.controller('MainController', ['$scope', '$resource', '$interval',
                         $scope.tableData.push([$scope.labels[i], $scope.data[0][i], $scope.data[1][i],
                             $scope.humidityChartData[0][i], $scope.humidityChartData[1][i]]);
                       }
+                      $scope.loaded = true;
                     });
                 });
             });

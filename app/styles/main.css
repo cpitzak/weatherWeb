@@ -1,0 +1,10 @@
+[ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}
+.spinner {
+    position:absolute;
+    width:441px; /*image width */
+    height:291px; /*image height */
+    left:50%; 
+    top:50%;
+    margin-left:-220.5px; /*image width/2 */
+    margin-top:-145.5px; /*image height/2 */
+}
