@@ -4,6 +4,8 @@
 
 This is a live demo of the weather of my room. Page updates without needing to refresh.
 
+Note: This demo uses an instance of mongodb from mlab.com and mlab.com has the following status: "Emergency maintenance required for Shared plan host in GCP US Central". [http://status.mlab.com/](http://status.mlab.com/)
+
 [https://weather-clintpitzak.rhcloud.com](https://weather-clintpitzak.rhcloud.com)
 
 ## Description
