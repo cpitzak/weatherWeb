@@ -4,11 +4,11 @@
 
 This is a live demo of the weather of my room. Page updates without needing to refresh.
 
-Note: This demo uses an instance of mongodb hosted on mlab.com (free acount with 500 mb of space). Status: [http://status.mlab.com/](http://status.mlab.com/)
+[https://weather-clintpitzak.rhcloud.com](https://weather-clintpitzak.rhcloud.com)
+
+Architecture of Demo: This demo uses an instance of mongodb hosted on mlab.com (free acount with 500 mb of space). Status: [http://status.mlab.com/](http://status.mlab.com/)
 
 And uses [https://www.openshift.com/](https://www.openshift.com/) to host my weatherWeb website (free account for up to 3 instances of an application. They changed there policy on free accounts but mine and other people who are already registered stay the same). And my raspberry pi runs the weatherService and DHTService I wrote to updated mongodb with the hourly outdoor and real-time indoor weather. You can see the architecture for the demo was designed to have this run for free :)
-
-[https://weather-clintpitzak.rhcloud.com](https://weather-clintpitzak.rhcloud.com)
 
 ## Description
 
