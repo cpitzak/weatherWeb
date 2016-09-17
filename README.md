@@ -39,8 +39,15 @@ You need to have the following installed:
 
 Note: make sure mongdb is running whenever using this service
 
-Update the config file in config/ if needed
+Update the config file in config/ to point to your mongodb
 
+Build a docker image and run
+```
+$ docker build -t cpitzak/weather-web .
+$ docker run -p 3000:3000 -d cpitzak/weather-web
+```
+
+Manual Setup
 ```
 $ sudo mkdir /apps
 $ sudo chown pi /apps
