@@ -47,6 +47,8 @@ $ docker build -t cpitzak/weather-web .
 $ docker run -p 3000:3000 -d cpitzak/weather-web
 ```
 
+or
+
 Manual Setup
 ```
 $ sudo mkdir /apps
