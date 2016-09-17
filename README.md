@@ -37,9 +37,15 @@ You need to have the following installed:
 
 ## Install
 
-Quick and easy install by using docker
+Quick and easy install by using docker:
 
 [Weather Web Docker Repository](https://hub.docker.com/r/cpitzak/weather-web/)
+```
+$ docker pull cpitzak/weather-web:1.0.0
+$ docker run -e "WEATHER_WEB_MONGO_URL=mongodb://your_mongo_url/weatherdb" \
+             -e "WEATHER_WEB_TZ=your_time_zone_default_is_PST" \
+             -p 3000:3000 -d cpitzak/weather-web:1.0.0
+```
 
 Build a docker image and run
 ```
