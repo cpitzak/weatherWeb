@@ -37,7 +37,7 @@ You need to have the following installed:
 
 ## Install
 
-Install and via Docker ([Weather Web Docker Repository](https://hub.docker.com/r/cpitzak/weather-web/)):
+Install and run via Docker ([Weather Web Docker Repository](https://hub.docker.com/r/cpitzak/weather-web/)):
 ```
 $ docker pull cpitzak/weather-web:1.0.0
 $ docker run -e "WEATHER_WEB_MONGO_URL=mongodb://your_mongo_url/weatherdb" \
