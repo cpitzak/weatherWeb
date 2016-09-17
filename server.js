@@ -29,8 +29,10 @@ months[9] = "October";
 months[10] = "November";
 months[11] = "December";
 
+var mongoUrl = process.env.WEATHER_WEB_MONGO_URL ? process.env.WEATHER_WEB_MONGO_URL : config.mongoUrl;
+
 // set time zone so that when visiting the webpage from different locations it matches the time zone of the raspberry pi
-process.env.TZ = config.timeZone;
+process.env.TZ = process.env.WEATHER_WEB_TZ ? process.env.WEATHER_WEB_TZ : config.timeZone;
 
 function convert24to12Hour(hour24) {
     var hour12 = ((hour24 + 11) % 12) + 1;
@@ -39,7 +41,7 @@ function convert24to12Hour(hour24) {
 }
 
 var staticFiles = path.join(__dirname, "app");
-mongoose.connect(config.mongoUrl);
+mongoose.connect(mongoUrl);
 
 app.use(express.static(staticFiles));
 app.use(session({secret: 'secretKey', resave: false, saveUninitialized: false}));

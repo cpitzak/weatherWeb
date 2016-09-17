@@ -37,19 +37,19 @@ You need to have the following installed:
 
 ## Install
 
-Note: make sure mongdb is running whenever using this service
+Quick and easy install by using docker
 
-Update the config file in config/ to point to your mongodb
+[Weather Web Docker Repository](https://hub.docker.com/r/cpitzak/weather-web/)
 
 Build a docker image and run
 ```
 $ docker build -t cpitzak/weather-web .
-$ docker run -p 3000:3000 -d cpitzak/weather-web
+$ docker run -e "WEATHER_WEB_MONGO_URL=mongodb://your_mongo_url/weatherdb" \
+             -e "WEATHER_WEB_TZ=your_time_zone_default_is_PST" \
+             -p 3000:3000 -d cpitzak/weather-web
 ```
 
-or
-
-Manual Setup
+Or to setup Manually
 ```
 $ sudo mkdir /apps
 $ sudo chown pi /apps
