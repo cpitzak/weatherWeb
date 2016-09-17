@@ -61,10 +61,9 @@ $ sudo chmod 755 /etc/init.d/weatherWeb
 $ sudo update-rc.d weatherWeb defaults
 $ sudo update-rc.d weatherWeb enable
 $ sudo systemctl daemon-reload
-$ npm install -g grunt-cli
+$ npm install -g bower-npm-resolver
 $ npm install
 $ bower install
-$ grunt build
 $ sudo service weatherWeb start
 ```
 Screen shot taken around 9:30 pm at night.
