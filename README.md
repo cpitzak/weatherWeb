@@ -1,6 +1,6 @@
 # WeatherWeb
 
-:red_circle:**ALERT**:red_circle: This repository is no longer maintained. Please see current version: [https://github.com/cpitzak/room-weather](https://github.com/cpitzak/room-weather)
+:red_circle: **ALERT**: This repository is no longer maintained. Please see current version: [https://github.com/cpitzak/room-weather](https://github.com/cpitzak/room-weather)
 
 ## Demo
 
