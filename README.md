@@ -1,6 +1,6 @@
 # WeatherWeb
 
-**ALERT**: This repository is no longer maintained. I refactored to use AWS architecture. View the code here: [https://github.com/cpitzak/room-weather](https://github.com/cpitzak/room-weather)
+**ALERT**: This repository is no longer maintained. Please see current version: [https://github.com/cpitzak/room-weather](https://github.com/cpitzak/room-weather)
 
 ## Demo
 
