@@ -1,5 +1,7 @@
 # WeatherWeb
 
+<span style="color:blue">NEW VERSION</span>[https://github.com/cpitzak/room-weather](https://github.com/cpitzak/room-weather)
+
 ## Demo
 
 This is a live demo of the weather of my room. Page updates without needing to refresh.
